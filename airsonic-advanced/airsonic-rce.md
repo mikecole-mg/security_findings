@@ -72,15 +72,15 @@ High-level reproduction outline (use a benign file to validate):
 
 ![Screenshot 1: Upload form with the 'Upload to' field set to a parent directory traversal](./1.png)
 
-*Caption:* The 'Upload to' value resolves outside the intended path.
+The 'Upload to' value resolves outside the intended path.
 
 ![Screenshot 2: Successful upload confirmation indicating write outside the application data directory](./2.png)
 
-*Caption:* Server accepts and stores the uploaded archive in the resolved location.
+Server accepts and stores the uploaded archive in the resolved location.
 
 ![Screenshot 3: Deployed context accessible via Tomcat, confirming server-side execution](./3.png)
 
-*Caption:* Accessing the new context demonstrates code execution.
+Accessing the new context demonstrates code execution.
 
 ---
 
