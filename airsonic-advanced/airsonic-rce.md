@@ -60,7 +60,7 @@ High-level reproduction outline (use a benign file to validate):
 
 1. Authenticate as a standard user.  
 2. Navigate to 'Upload playlist'.  
-3. Set 'Upload to' to a parent directory traversal that resolves to Tomcat's deployment directory (for example, a value that resolves to `.../webapps`).  
+3. Set 'Upload to' to a parent directory traversal that resolves to Tomcat's deployment directory (for example, a value that resolves to `../webapps`).  
 4. Upload an application archive with a harmless JSP that prints a timestamp to confirm execution.  
 5. Browse to the deployed context path and observe server-side execution.
 
