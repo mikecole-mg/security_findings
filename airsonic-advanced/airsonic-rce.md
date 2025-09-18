@@ -1,11 +1,12 @@
 # Unrestricted File Upload and Path Traversal to Remote Code Execution in Airsonic Advanced
 
-**Severity:** Critical  
+**Severity:** Medium  
 **Vectors:** CWE-434 Unrestricted Upload of File with Dangerous Type; CWE-22 Path Traversal  
-**CVSS v3.1:** `AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H` (~9.1)  
+**CVSS v3.1:** `AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:X/RC:R` (6.3)  
 **Tested build:** Airsonic Advanced `10.6.0` on `Linux`, under Apache Tomcat `9.0.107`  
-**Reporter:** `Mike Cole`  
-**Disclosure status:** Coordinated disclosure in progress. CVE pending.
+**Reporter:** `Mike Cole, Mantel Group`
+**CVE:** `CVE-2025-10669`
+**Disclosure status:** `Public (full disclosure)`
 
 ---
 
@@ -126,6 +127,7 @@ Accessing the new context demonstrates code execution.
 - `<2025-08-05>` Initial discovery  
 - `<2025-08-06>` Attempted to contact vendor on GitHub and IRC
 - `<2025-09-06>` Public disclosure
+- `<2025-09-18>` CVE-2025-10669
 
 ---
 
