@@ -4,9 +4,9 @@
 **Vectors:** CWE-434 Unrestricted Upload of File with Dangerous Type; CWE-22 Path Traversal  
 **CVSS v3.1:** `AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L/E:P/RL:X/RC:R` (6.3)  
 **Tested build:** Airsonic Advanced `10.6.0` on `Linux`, under Apache Tomcat `9.0.107`  
-**Reporter:** `Mike Cole, Mantel Group`
-**CVE:** `CVE-2025-10669`
-**Disclosure status:** `Public (full disclosure)`
+**Reporter:** `Mike Cole, Mantel Group`  
+**CVE:** `CVE-2025-10669`  
+**Disclosure status:** `Public (full disclosure)`  
 
 ---
 
