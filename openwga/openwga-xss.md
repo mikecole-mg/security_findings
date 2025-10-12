@@ -81,7 +81,7 @@ Creating domains is also vulnerable.
 
 ![Viewing domains executes the stored JavaScript](./6.png)
 
-Viewing domains executes the stored JavaScript
+Viewing domains executes the stored JavaScript.
 
 ---
 
