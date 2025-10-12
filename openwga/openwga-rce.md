@@ -3,7 +3,7 @@
 **Severity:** High  
 **Vectors:** CWE-94 Improper Control of Generation of Code; CWE-434 Unrestricted Upload/Write of File with Dangerous Type; CWE-73 External Control of File Name or Path  
 **CVSS v3.1:** `AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:X/RC:R` (7.1)  
-**Tested build:** OpenWGA Admin Client `7.11.12 (Build 737)` on `Linux`, under Apache Tomcat `9.0.107`
+**Tested build:** OpenWGA Admin Client `7.11.12 (Build 737)` on `Linux`, under Apache Tomcat `9.0.107`  
 **Reporter:** `Mike Cole, Mantel Group`  
 **CVE:** `TBD`  
 **Disclosure status:** `Private (responsible disclosure in progress)`  
