@@ -69,11 +69,19 @@ Reproduce using a benign payload first:
 
 ![Stored XSS vulnerabilities exist in most fields in the admin application. Creating jobs for example.](./3.png)
 
+Stored XSS vulnerabilities exist in most fields in the admin application. Creating jobs for example.
+
 ![Viewing jobs executes the stored JavaScript](./4.png)
+
+Viewing jobs executes the stored JavaScript.
 
 ![Creating domains is also vulnerable](./5.png)
 
+Creating domains is also vulnerable.
+
 ![Viewing domains executes the stored JavaScript](./6.png)
+
+Viewing domains executes the stored JavaScript
 
 ---
 
