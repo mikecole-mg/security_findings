@@ -3,7 +3,7 @@
 **Severity:** High  
 **Vectors:** CWE-94 Improper Control of Generation of Code; CWE-434 Unrestricted Upload/Write of File with Dangerous Type; CWE-73 External Control of File Name or Path  
 **CVSS v3.1:** `AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:X/RC:R` (7.1)  
-**Tested build:** OpenWGA Admin Client `7.11.12 (Build 737)` on `Linux`, under Apache Tomcat (default container)  
+**Tested build:** OpenWGA Admin Client `7.11.12 (Build 737)` on `Linux`, under Apache Tomcat `9.0.107`
 **Reporter:** `Mike Cole, Mantel Group`  
 **CVE:** `TBD`  
 **Disclosure status:** `Private (responsible disclosure in progress)`  
@@ -72,11 +72,9 @@ return "OK";
 
 ## Evidence
 
-![Screenshot 1: TMLScript console showing use of WGA.File to write into a web-served path](./1.png)
+![A JSP based reverse shell is written into the `openwga-7.11.12.0-ce` webroot](./1.png)
 
-![Screenshot 2: HTTP request to the written file returns expected marker content](./2.png)
-
-![Screenshot 3: Minimal JSP evaluates on the server, proving code execution](./3.png)
+![JSP evaluates on the server, proving code execution](./2.png)
 
 ---
 
@@ -114,9 +112,8 @@ return "OK";
 
 ## Timeline
 
-- `<2025-10-13>` Initial discovery on `7.11.12 (Build 737)`  
-- `<2025-10-13>` Vendor notified with full PoC and proposed mitigations  
-- `<TBD>` Vendor acknowledgement and fix release  
+- `<2025-09-11>` Initial discovery on `7.11.12 (Build 737)`  
+- `<2025-09-12>` Vendor notified, no response
 - `<TBD>` Public advisory
 
 ---
