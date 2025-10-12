@@ -74,7 +74,11 @@ return "OK";
 
 ![A JSP based reverse shell is written into the `openwga-7.11.12.0-ce` webroot](./1.png)
 
+A JSP based reverse shell is written into the `openwga-7.11.12.0-ce` webroot.
+
 ![JSP evaluates on the server, proving code execution](./2.png)
+
+JSP evaluates on the server, proving code execution.
 
 ---
 
