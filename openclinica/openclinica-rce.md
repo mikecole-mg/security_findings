@@ -7,13 +7,13 @@ A remote code execution issue via path traversal in the **Import CRF Data** work
 ## Product / Versions
 - OpenClinica Community Edition  
   - **3.13** – Changeset `74f4df3481b6` (2017-02-28)  
-  - **3.12.2** – Changeset `347dcfca3d17` (2016-11-21)
+  - **3.12.2** – Changeset `347dcfca3d17` (2016-11-21) (OpenClinica VM Image)
 
 ## Affected area
 `Tasks → Import CRF Data` (multipart upload parameter: `xml_file`)
 
 ## Auth
-Authenticated (tested as **Data Manager**)
+Authenticated (tested as **Data Manager** and **Clinical Research Coordinator**)
 
 ## Summary
 The upload handler trusts the client-supplied `filename` and accepts `../` traversal, allowing writes outside the intended directory. By targeting the deployed webapp path, an attacker can write a JSP and achieve execution when the file is requested.
@@ -74,4 +74,6 @@ http://<target>:8080/OpenClinica/shell.jsp
 - Run Tomcat/OpenClinica as a non-privileged user; make webroots non-writable; disable JSP execution if not required.
 
 ## Timeline
-- 2025-10-09 → 2025-10-23: Discovered and reproduced on 3.12.2 and 3.13 images. Evidence includes Burp requests and shell session captures.
+- 2025-10-09: Discovered and reproduced on 3.12.2 and 3.13 images.
+- 2025-10-09: Attempted to contact vendor, no response.
+- 2025-10-23: Reported to VulDB.
