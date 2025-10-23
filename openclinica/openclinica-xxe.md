@@ -7,7 +7,7 @@ An XML External Entity issue in **Import CRF Data** discloses OS files via error
 ## Product / Versions
 - OpenClinica Community Edition  
   - **3.13** – Changeset `74f4df3481b6` (2017-02-28)  
-  - **3.12.2** – Changeset `347dcfca3d17` (2016-11-21)
+  - **3.12.2** – Changeset `347dcfca3d17` (2016-11-21) (OpenClinica VM Image)
 
 ## Affected area
 `Tasks → Import CRF Data` (multipart upload parameter: `xml_file`)
